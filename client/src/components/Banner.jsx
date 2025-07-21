@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <section className="bg-cover bg-center bg-no-repeat bg-[url('/banner.jpg')]">
       <div>
-        <div className="max-w-7xl mx-auto px-5 lg:px-0 py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <div className="max-w-7xl mx-auto px-5 py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-white">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               Plan Your Events Effortlessly

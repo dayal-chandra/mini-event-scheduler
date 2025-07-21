@@ -39,7 +39,7 @@ const NavBar = () => {
 
   return (
     <div className="bg-base-100 shadow-sm fixed top-0 left-0 w-full z-40">
-      <div className="navbar max-w-7xl mx-auto px-5 lg:px-0">
+      <div className="navbar max-w-7xl mx-auto px-5">
         <div className="navbar-start">
           <div className="z-50">
             <div tabIndex={0} role="button" className=" md:hidden">

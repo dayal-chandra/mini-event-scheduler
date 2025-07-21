@@ -10,7 +10,6 @@ const RootLayout = () => {
       <main className="min-h-[calc(100vh-130px)]">
         <Outlet></Outlet>
       </main>
-
       <Footer></Footer>
     </div>
   );

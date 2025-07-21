@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const CreateEvent = ({ onCreateEvent }) => {
   const [title, setTitle] = useState("");
@@ -34,6 +35,13 @@ const CreateEvent = ({ onCreateEvent }) => {
 
     onCreateEvent(newEvent);
 
+    Swal.fire({
+      title: "Success!",
+      text: "Your event has been created successfully.",
+      icon: "success",
+      confirmButtonText: "OK",
+    });
+
     setTitle("");
     setDate("");
     setTime("");
@@ -43,7 +51,7 @@ const CreateEvent = ({ onCreateEvent }) => {
   return (
     <section
       id="createEvent"
-      className="max-w-3xl mx-auto px-6 my-16 bg-[#f3f3f3] rounded-2xl shadow-inner"
+      className="max-w-3xl mx-auto px-5 my-16 bg-[#f3f3f3] rounded-2xl shadow-inner"
     >
       <h2 className="text-3xl font-semibold py-8 text-center text-gray-800">
         Create New Event
@@ -94,6 +102,8 @@ const CreateEvent = ({ onCreateEvent }) => {
                 boxShadow:
                   "inset 4px 4px 8px #d1d1d1, inset -4px -4px 8px #ffffff",
               }}
+              min={new Date().toISOString().split("T")[0]}
+              max="2099-12-31"
               required
             />
           </div>
