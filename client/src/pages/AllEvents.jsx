@@ -23,7 +23,9 @@ const AllEvent = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/events");
+      const res = await axios.get(
+        "https://server-phi-six-59.vercel.app/events"
+      );
       setEvents(res.data);
     } catch (error) {
       console.error("Error fetching events:", error);
@@ -44,7 +46,7 @@ const AllEvent = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/events/${id}`);
+        await axios.delete(`https://server-phi-six-59.vercel.app/events/${id}`);
         Swal.fire("Deleted!", "The event has been deleted.", "success");
         fetchEvents();
       } catch (err) {
@@ -56,7 +58,9 @@ const AllEvent = () => {
 
   const handleArchive = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/events/${id}/archive`);
+      await axios.patch(
+        `https://server-phi-six-59.vercel.app/events/${id}/archive`
+      );
       Swal.fire("Archive action!", "Archive status updated.", "info");
       fetchEvents();
     } catch (err) {
@@ -77,7 +81,10 @@ const AllEvent = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/events/${editEvent.id}`, editData);
+      await axios.put(
+        `https://server-phi-six-59.vercel.app/events/${editEvent.id}`,
+        editData
+      );
       Swal.fire("Updated!", "Event updated successfully!", "success");
       setEditEvent(null);
       fetchEvents();

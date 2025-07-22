@@ -11,7 +11,10 @@ const Home = () => {
 
   const onCreateEvent = async (newEvent) => {
     try {
-      const res = await axios.post("http://localhost:5000/events", newEvent);
+      const res = await axios.post(
+        "https://server-phi-six-59.vercel.app/events",
+        newEvent
+      );
       console.log("Event created:", res.data);
     } catch (err) {
       console.error("Error creating event:", err);

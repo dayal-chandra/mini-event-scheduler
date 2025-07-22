@@ -5,6 +5,13 @@ Users can create, view, update, archive, and delete events with automatic AI-lik
 
 ---
 
+## Live Demo
+
+Check out the live version of this project here:  
+[EventFlow](https://event-flow-dayal.netlify.app/)
+
+---
+
 ## Features
 
 - Create, update, delete, and archive events

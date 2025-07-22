@@ -11,7 +11,9 @@ const Archived = () => {
 
   const fetchArchivedEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/events");
+      const res = await axios.get(
+        "https://server-phi-six-59.vercel.app/events"
+      );
       const archived = res.data.filter((ev) => ev.archived);
       setArchivedEvents(archived);
     } catch (err) {
