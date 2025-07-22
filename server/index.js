@@ -10,9 +10,53 @@ app.use(express.json());
 
 let events = [];
 
+// function categorizeEvent(title = "", notes = "") {
+//   const workKeywords = ["meeting", "client", "project"];
+//   const personalKeywords = ["birthday", "family", "party"];
+
+//   const content = `${title} ${notes}`.toLowerCase();
+
+//   if (workKeywords.some((word) => content.includes(word))) return "Work";
+//   if (personalKeywords.some((word) => content.includes(word)))
+//     return "Personal";
+//   return "Other";
+// }
+
 function categorizeEvent(title = "", notes = "") {
-  const workKeywords = ["meeting", "client", "project"];
-  const personalKeywords = ["birthday", "family", "party"];
+  const workKeywords = [
+    "meeting",
+    "client",
+    "project",
+    "deadline",
+    "call",
+    "interview",
+    "presentation",
+    "report",
+    "task",
+    "team",
+    "office",
+    "zoom",
+    "workshop",
+    "review",
+  ];
+
+  const personalKeywords = [
+    "birthday",
+    "family",
+    "party",
+    "wedding",
+    "anniversary",
+    "dinner",
+    "vacation",
+    "holiday",
+    "hangout",
+    "friend",
+    "concert",
+    "shopping",
+    "date",
+    "celebration",
+    "event",
+  ];
 
   const content = `${title} ${notes}`.toLowerCase();
 
@@ -58,13 +102,21 @@ app.post("/events", (req, res) => {
 
 app.put("/events/:id", (req, res) => {
   const { id } = req.params;
+  const { title, date, time, notes } = req.body;
+
   const event = events.find((ev) => ev.id === id);
 
   if (!event) {
     return res.status(404).json({ error: "Event not found" });
   }
 
-  event.archived = true;
+  if (title) event.title = title;
+  if (date) event.date = date;
+  if (time) event.time = time;
+  if (notes !== undefined) event.notes = notes;
+
+  event.category = categorizeEvent(event.title, event.notes);
+
   res.json(event);
 });
 
@@ -78,6 +130,19 @@ app.delete("/events/:id", (req, res) => {
 
   events.splice(index, 1);
   res.status(204).send();
+});
+
+app.patch("/events/:id/archive", (req, res) => {
+  const { id } = req.params;
+  const event = events.find((e) => e.id === id);
+  if (!event) {
+    return res.status(404).json({ message: "Event not found" });
+  }
+
+  event.archived = !event.archived;
+  res
+    .status(200)
+    .json({ message: "Archive status toggled", archived: event.archived });
 });
 
 app.listen(PORT, () => {
