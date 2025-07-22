@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Archived = () => {
+  useEffect(() => {
+    document.title = "EventFlow | Archived";
+  }, []);
+
   const [archivedEvents, setArchivedEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 

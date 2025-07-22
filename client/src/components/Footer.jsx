@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -9,18 +10,15 @@ const Footer = () => {
             © {new Date().getFullYear()} EventFlow. All rights reserved.
           </p>
           <div className="flex gap-4 mt-3 md:mt-0 text-sm">
-            <a href="#home" className="hover:underline">
+            <Link to="/" className="hover:underline">
               Home
-            </a>
-            <a href="#create" className="hover:underline">
-              Create Event
-            </a>
-            <a href="#events" className="hover:underline">
+            </Link>
+            <Link to="/all-events" className="hover:underline">
               All Events
-            </a>
-            <a href="#contact" className="hover:underline">
-              Contact
-            </a>
+            </Link>
+            <Link to="/archived" className="hover:underline">
+              Archived
+            </Link>
           </div>
         </div>
       </footer>

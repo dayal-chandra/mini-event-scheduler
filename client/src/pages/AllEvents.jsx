@@ -3,6 +3,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AllEvent = () => {
+  useEffect(() => {
+    document.title = "EventFlow | All Events";
+  }, []);
+
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editEvent, setEditEvent] = useState(null);
